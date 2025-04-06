@@ -61,10 +61,5 @@ const App: React.FC = () => {
 
 export default App;
 
-//? agregar los loading
-//? arreglar estilos
-//? crear el endpoint para que jwt no este en el navegador (frontend)
-// verificar la autenticacion en ciertas rutas como asistencia, si esta autenticado ya no puede regresar a verificacion o verificacion/f
-// la ruta protegida es la de asistencia
 
-// verificar un doble registro (quizas cuando ya este registrado (es decir en la asistencia) colocar un boton para agregar el embedding de la cara)
+//! verificar un doble registro (quizas cuando ya este registrado (es decir en la asistencia) colocar un boton para agregar el embedding de la cara)

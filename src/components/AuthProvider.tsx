@@ -43,6 +43,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsAuthenticated(true);
       } else {
         alert('Login fallido: ' + data.message);
+        console.log('Login fallido: ' + (data.message || 'No se pudo iniciar sesión'));
       }
     } catch (error) {
       console.error('Error durante el login:', error);
