@@ -65,7 +65,34 @@ const Registro: React.FC = () => {
 
         checkCameraPermission();
     }, []);
+    
+    useEffect(() => {
+        if (isFormCompleted) {
+            if (isPhotoCaptured || isFingerPrintCaptured) {
+                setIsSubmitable(true);
+            } else {
+                setIsSubmitable(false);
+            }
+        } else {
+            setIsSubmitable(false);
+        }
+    }, [isPhotoCaptured, isFingerPrintCaptured, isFormCompleted]);
 
+    useEffect(() => {
+        if (dni.length >= 8 && nombre.length > 0) {
+            setIsFormCompleted(true);
+        } else {
+            setIsFormCompleted(false);
+        }
+    }, [dni, nombre]);
+
+    useEffect(() => {
+        if (fingerprintID) {
+            setIsFingerPrintCaptured(true);
+        } else {
+            setIsFingerPrintCaptured(false);
+        }
+    }, [fingerprintID]);
 
 
     const resetValues = () => {
@@ -79,7 +106,6 @@ const Registro: React.FC = () => {
         setDni('');
         setNombre('');
     }
-
 
     const displayCamera = () => {
         setIsCameraOpen(true);
@@ -181,33 +207,6 @@ const Registro: React.FC = () => {
         }
     };
 
-    useEffect(() => {
-        if (isFormCompleted) {
-            if (isPhotoCaptured || isFingerPrintCaptured) {
-                setIsSubmitable(true);
-            } else {
-                setIsSubmitable(false);
-            }
-        } else {
-            setIsSubmitable(false);
-        }
-    }, [isPhotoCaptured, isFingerPrintCaptured, isFormCompleted]);
-
-    useEffect(() => {
-        if (dni.length >= 8 && nombre.length > 0) {
-            setIsFormCompleted(true);
-        } else {
-            setIsFormCompleted(false);
-        }
-    }, [dni, nombre]);
-
-    useEffect(() => {
-        if (fingerprintID) {
-            setIsFingerPrintCaptured(true);
-        } else {
-            setIsFingerPrintCaptured(false);
-        }
-    }, [fingerprintID]);
 
     return (
         <div className='component-container'>
@@ -285,7 +284,7 @@ const Registro: React.FC = () => {
                         </button>
                     </div>
                 </div>
-                <form onSubmit={handleSubmit} style={{
+                <form onSubmit={(e) => handleSubmit(e)} style={{
                     width: "100%",
                     display: "flex",
                     flexDirection: "column",
