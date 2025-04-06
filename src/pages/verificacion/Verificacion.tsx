@@ -16,7 +16,8 @@ const Verificacion: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState("")
     const [isError, setIsError] = useState(false)
     const { login } = useAuth();
-    
+    console.log(errorMessage);
+    console.log(isError);
 
     const fingerPrintVerification = async () => {
         try {

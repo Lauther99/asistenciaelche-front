@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
-import { useNavigate } from 'react-router-dom';
 import RecordRTC from 'recordrtc';
 import BlockedCamera from '../../components/BlockedCamera';
 import LoadingComponent from '../../components/LoadingComponent';
@@ -11,12 +10,10 @@ import { useAuth } from '../../components/AuthProvider';
 
 const base = import.meta.env.VITE_BASE_BACKEND_URL
 const verify_url = base + "/v1/verify"
-const encrypt_token_url = base + "/v1/encrypt-data"
+// const encrypt_token_url = base + "/v1/encrypt-data"
 
 
 const VerificacionFace: React.FC = () => {
-    const navigate = useNavigate();
-
     const webcamRef = useRef<any>(null);
     const [videoSrc, setVideoSrc] = useState<string | null>(null);
     const [isRecording, setIsRecording] = useState(false);
