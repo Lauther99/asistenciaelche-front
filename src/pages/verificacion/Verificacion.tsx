@@ -47,7 +47,7 @@ const Verificacion: React.FC = () => {
             if (data.status === "success") {
                 const dni = data?.content?.dni
                 const nombre = data?.content?.nombre
-                login(nombre, dni);
+                await login(nombre, dni);
                 window.location.reload();
             } else {
                 alert(data.message)
